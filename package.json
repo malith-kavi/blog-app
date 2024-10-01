@@ -11,7 +11,8 @@
   "license": "ISC",
   "description": "Mern app to learn fullstack development",
   "dependencies": {
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0"
   },
   "devDependencies": {
     "concurrently": "^9.0.1",
