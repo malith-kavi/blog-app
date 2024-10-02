@@ -7,6 +7,8 @@ import NotFound from './NotFound';
 
 //components
 import Articles from '../components/Articles';
+import CommentsList from '../components/CommentsList';
+import AddCommentForm from '../components/AddCommentForm';
 
 const Article = () => {
     const { name }=useParams();
@@ -14,8 +16,14 @@ const Article = () => {
     const [articleInfo, setArticleInfo] = useState({ comments:[] });
     
     useEffect(() => {
-        console.log("Component Mounted");
-    });
+        const fetchData = async () =>{
+            const result = await fetch(`/api/articles/${name}`);
+            const body = await result.json();
+            console.log(body);
+            setArticleInfo(body);
+        };
+        fetchData();
+    }, [name]);
     
     if (!article) return <NotFound />;
     const otherArticles = articleContent.filter(article => article.name !== name);
@@ -26,6 +34,8 @@ const Article = () => {
             {article.content.map((paragraph, index) => (
                 <p className='mx-auto leading-relaxed text-base mb-4'>{paragraph}</p>
             ))}
+            <CommentsList comments={articleInfo.comments} />
+            <AddCommentForm articleName={name}  setArticleInfo={setArticleInfo}/>
             <h1 className='sm:text-2xl text-xl font-bold my-4 text-gray-900'>Other Articles</h1>
             <div className='flex flex-wrap -m-4'>
                 <Articles articles={otherArticles} />

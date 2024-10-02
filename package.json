@@ -6,7 +6,6 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
-
   },
   "keywords": [],
   "author": "Malith Kavinda",
@@ -14,7 +13,10 @@
   "description": "Mern app to learn fullstack development",
   "dependencies": {
     "express": "^4.21.0",
-    "mongodb": "^6.9.0"
+    "mongodb": "^6.9.0",
+    "react-scripts": "^5.0.1",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "concurrently": "^9.0.1",
