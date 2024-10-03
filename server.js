@@ -15,7 +15,7 @@ const withDB = async (operations,res) => {
     } catch (error) {
         res.status(500).json({message: "Error connecting to database", error });
     }
-}
+};
 
 app.get("/api/articles/:name", async(req, res) => {
     withDB(async(db) => {
@@ -42,7 +42,7 @@ app.post('/api/articles/:name/add-comments', (req, res) => {
                 },
             }
         );
-        const updateArticleInfo = await db.collection('articles').findOne({name:articleName})
+        const updateArticleInfo = await db.collection('articles').findOne({name:articleName});
         res.status(200).json(updateArticleInfo);
     }, res);
 });
